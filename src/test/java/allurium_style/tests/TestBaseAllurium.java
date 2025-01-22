@@ -8,7 +8,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.testng.annotations.*;
+//import org.testng.annotations.*;
 
 public class TestBaseAllurium {
 
@@ -40,7 +40,9 @@ public class TestBaseAllurium {
     }
 
 
+    // Example for TestNg
 
+    /*
     @BeforeSuite
     protected void beforeTest() {
         Configuration.browser = "chrome";
@@ -63,7 +65,6 @@ public class TestBaseAllurium {
     protected void afterTest() {
         WebDriverRunner.closeWebDriver();
     }
-
-
+     */
 
 }

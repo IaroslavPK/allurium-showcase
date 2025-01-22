@@ -6,7 +6,6 @@ import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.assertj.core.api.Assertions;
-import org.testng.asserts.Assertion;
 
 import static com.codeborne.selenide.Selenide.$$;
 

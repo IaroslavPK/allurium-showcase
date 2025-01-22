@@ -2,16 +2,13 @@
 plugins {
     id "java-library"
     id "io.qameta.allure" version "2.9.6"
-//    id 'io.freefair.aspectj' version '6.6.1'
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(12)
-        vendor = JvmVendorSpec.ADOPTOPENJDK
-        implementation = JvmImplementation.J9
-    }
-}
+//java {
+//    toolchain {
+//        languageVersion = JavaLanguageVersion.of(17)
+//    }
+//}
 
 configurations {
     testCompile
@@ -20,7 +17,7 @@ configurations {
 compileJava.options.encoding = 'utf-8'
 
 group = "dm.tools"
-version = "6.17.2"
+version = "2.0.0"
 
 repositories {
     mavenCentral()
@@ -32,7 +29,7 @@ repositories {
 
 ext {
     allureVersion = '2.17.0'
-    aspectjVersion = '1.9.21'
+    aspectjVersion = '1.9.22.1'
     lombokVersion = '1.18.22'
     selenideVersion = '7.6.1'
     junitVersion = '5.9.2'
@@ -41,6 +38,8 @@ ext {
 }
 
 dependencies {
+    implementation "org.aspectj:aspectjrt:${aspectjVersion}"       // vital to use the same version that allurium uses
+    implementation "org.aspectj:aspectjweaver:${aspectjVersion}"   // vital to use the same version that allurium uses
     implementation("org.testng:testng:${testNGVersion}")
     implementation("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     implementation("com.codeborne:selenide:${selenideVersion}")
@@ -53,8 +52,6 @@ dependencies {
     implementation('io.qameta.atlas:atlas-webdriver:1.8.0')
     implementation('org.assertj:assertj-core:3.19.0')
     testImplementation("org.hamcrest:hamcrest-all:1.3")
-    implementation('org.slf4j:slf4j-simple:1.7.30')
-    implementation('com.github.javafaker:javafaker:1.0.2')
     implementation("javax.persistence:javax.persistence-api:2.2")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.8.6")
     implementation('com.google.code.gson:gson:2.10.1')
@@ -72,8 +69,7 @@ dependencies {
         exclude group: "com.google.guava", module: "guava"
     }
     testImplementation("io.qameta.allure:allure-junit5:2.24.0")
-
-    implementation('dm.tools:allurium:0.9')
+    implementation('dm.tools:allurium:7.6.1')
 }
 
 reporting {
@@ -82,7 +78,7 @@ reporting {
 
 allure {
     version = "${allureVersion}"
-    aspectjVersion = '1.9.21'
+//    aspectjVersion = "${aspectjVersion}"
 }
 
 test {
